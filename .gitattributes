@@ -1,0 +1,17 @@
+# Docs: https://git-scm.com/docs/gitattributes
+
+# Following four files are managed by Gradle, and should not be
+# touched by others.  Not even Git.  Hence, disable the Git autocrlf
+# for them.
+#
+# Upgrading these files is documented in Gradle release notes:
+# https://gradle.org/releases/
+#
+# But to save you a search, it is typically:
+#
+#  .\gradlew wrapper --gradle-version=<new-version>
+#
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+gradle/wrapper/gradle-wrapper.jar -text
+gradle/wrapper/gradle-wrapper.properties text eol=lf

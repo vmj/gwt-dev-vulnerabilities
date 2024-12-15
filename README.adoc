@@ -1,0 +1,30 @@
+= Vulnerability report for dependencies of `gwt-dev`
+
+First, and then occasionally, update the cached vulnerability data:
+
+  ./gradlew -P "NVD_API_KEY=..." dependencyCheckUpdate
+
+This will download CVE (Common Vulnerabilities and Exposures) data
+from NVD (National Vulnerability Database).
+
+You will need to use your own https://nvd.nist.gov/developers/request-an-api-key[NVD API key].
+If you don't have one, you can use the NVD API without a key:
+
+  ./gradlew dependencyCheckUpdate
+
+WARNING: Even with an API key, the update process takes a long time.
+Without an API key, it takes eons, and may even fail, due to https://nvd.nist.gov/developers/start-here[rate limits].
+
+Then, analyze the dependencies and produce the report:
+
+  ./gradlew dependencyCheckAnalyze
+
+Open the report in your browser.
+The file is `build/reports/dependency-check-report.html`.
+
+I have included the report, for convenience, in this repo.
+But **NOTE** that the report gets old as new vulnerabilities are discovered.
+
+At the time of writing, the `gwt-dev` pulls with it 55 additional JAR files,
+32 of them contain reported vulnerabilities, totaling at 246 unique CVEs.
+The last GWT release did not update a single one of these dependencies.
